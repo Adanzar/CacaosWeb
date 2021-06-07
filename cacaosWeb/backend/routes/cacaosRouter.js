@@ -11,8 +11,8 @@ function cacaoRouter () {
   cacaoRoutes
     .route('/:productId')
     .get(cacaosController.getById)
-    .put(cacaosController.getAll)
-    .delete(cacaosController.create)
+    .put(cacaosController.updateById)
+    .delete(cacaosController.deleteById)
 
   return cacaoRoutes
 }
