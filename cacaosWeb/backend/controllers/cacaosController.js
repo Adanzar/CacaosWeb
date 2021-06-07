@@ -1,29 +1,40 @@
+
 const Cacao = require('../models/cacaosModel')
 
 function controller () {
-//   const getAll = async (req, res) => {
-//     const query = { ...req.query }
-//     try {
-//       const cacaos = await Cacao.find(query)
-//       res.json(cacaos)
-//     } catch (error) {
-//       res.status(500)
-//       res.send(error)
-//     }
-//   }
-  const create = async (req, res) => {
-    try {
-      const cacaos = await Cacao.find({
-        ...req.body
-      })
-      res.json(cacaos)
-    } catch (error) {
-      res.status(500)
-      res.send(error)
-    }
-  }
   return {
-    create
+    getAll: async (req, res) => {
+      try {
+        const cacaos = await Cacao.find({ ...req.query })
+        res.json(cacaos)
+      } catch (error) {
+        res.status(500)
+        res.send(error)
+      }
+    },
+
+    create: async (req, res) => {
+      try {
+        const newCacaoProduct = await Cacao.create({
+          ...req.body
+        })
+
+        res.json(newCacaoProduct)
+      } catch (error) {
+        res.status(500)
+        res.send(error)
+      }
+    },
+    getById: async (req, res) => {
+      try {
+        const { cacaoId } = req.params
+        const cacao = await Cacao.findById(cacaoId)
+        res.json(cacao)
+      } catch (error) {
+        res.status(500)
+        res.send(error)
+      }
+    }
 
   }
 }
