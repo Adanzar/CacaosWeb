@@ -9,7 +9,7 @@ function cacaoRouter () {
     .get(cacaosController.getAll)
     .post(cacaosController.create)
   cacaoRoutes
-    .route('/:cacaoId')
+    .route('/:productId')
     .get(cacaosController.getById)
     .put(cacaosController.getAll)
     .delete(cacaosController.create)
