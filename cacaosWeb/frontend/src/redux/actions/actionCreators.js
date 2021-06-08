@@ -6,10 +6,10 @@ const url = process.env.REACT_APP_API_URL;
 export function getProducts() {
   return async (dispatch) => {
     try {
-      const { response } = await axios(url);
+      const { data } = await axios(url);
       dispatch({
         type: actionTypes.GET_ALL_PRODUCT,
-        response
+        products: data
       });
     } catch (error) {
       dispatch({
@@ -21,10 +21,10 @@ export function getProducts() {
 export function getOneProduct(productId) {
   return async (dispatch) => {
     try {
-      const { response } = await axios(`${url}/${productId}`);
+      const { data } = await axios(`${url}/${productId}`);
       dispatch({
         type: actionTypes.GET_ALL_PRODUCT,
-        response
+        products: data
       });
     } catch (error) {
       dispatch({
@@ -36,10 +36,10 @@ export function getOneProduct(productId) {
 export function createProduct(product) {
   return async (dispatch) => {
     try {
-      const { response } = await axios.post(url, product);
+      const { data } = await axios.post(url, product);
       dispatch({
         type: actionTypes.CREATE_PRODUCT,
-        response
+        products: data
       });
     } catch (error) {
       dispatch({
@@ -50,19 +50,19 @@ export function createProduct(product) {
 }
 export function modifyProduct(productId, itemToModify) {
   return async (dispatch) => {
-    const { response } = await axios.put(`${url}/${productId}`, itemToModify);
+    const { data } = await axios.put(`${url}/${productId}`, itemToModify);
     dispatch({
       type: actionTypes.UPDATE_PRODUCT,
-      response
+      products: data
     });
   };
 }
 export function deleteProduct(productId) {
   return async (dispatch) => {
-    const { response } = await axios.delete(`${url}/${productId}`);
+    const { data } = await axios.delete(`${url}/${productId}`);
     dispatch({
       type: actionTypes.DELETE_PRODUCT,
-      response
+      products: data
     });
   };
 }
