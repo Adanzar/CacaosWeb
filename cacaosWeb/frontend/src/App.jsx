@@ -3,8 +3,7 @@ import { Provider } from 'react-redux';
 import {
   BrowserRouter,
   Route,
-  Switch,
-  Link
+  Switch
 } from 'react-router-dom';
 import Header from './components/Header/header';
 import store from './redux/store/index';
@@ -20,16 +19,9 @@ function App() {
   return (
     <>
       <Provider store={store()}>
-        <Header />
+
         <BrowserRouter>
-          <nav className="navegationBar">
-            <Link to="/"> Home</Link>
-            <Link to="/products">Products</Link>
-            <Link to="/details">Details</Link>
-            <Link to="/aboutus">AboutUs</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/cart">Cart</Link>
-          </nav>
+          <Header />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/products" component={Products} />
@@ -37,7 +29,6 @@ function App() {
             <Route path="/details" component={Details} />
             <Route path="/cart" component={Cart} />
             <Route path="/login" component={Login} />
-
           </Switch>
         </BrowserRouter>
       </Provider>
