@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import axios from 'axios';
 import actionTypes from './actionTypes';
 
@@ -23,8 +24,8 @@ export function getOneProduct(productId) {
     try {
       const { data } = await axios(`${url}/${productId}`);
       dispatch({
-        type: actionTypes.GET_ALL_PRODUCT,
-        products: data
+        type: actionTypes.GET_ONE_PRODUCT,
+        product: data
       });
     } catch (error) {
       dispatch({
@@ -39,7 +40,7 @@ export function createProduct(product) {
       const { data } = await axios.post(url, product);
       dispatch({
         type: actionTypes.CREATE_PRODUCT,
-        products: data
+        product: data
       });
     } catch (error) {
       dispatch({
@@ -53,7 +54,7 @@ export function modifyProduct(productId, itemToModify) {
     const { data } = await axios.put(`${url}/${productId}`, itemToModify);
     dispatch({
       type: actionTypes.UPDATE_PRODUCT,
-      products: data
+      product: data
     });
   };
 }
@@ -62,7 +63,7 @@ export function deleteProduct(productId) {
     const { data } = await axios.delete(`${url}/${productId}`);
     dispatch({
       type: actionTypes.DELETE_PRODUCT,
-      products: data
+      product: data
     });
   };
 }

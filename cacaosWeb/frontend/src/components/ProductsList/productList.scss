@@ -1,0 +1,17 @@
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    .list__item{
+        border: 0.5px solid burlywood;
+        padding: 15%;
+    }
+    .list__item--name--price{
+    display: flex;
+    justify-content: center;
+    }
+    .list__item--img{
+        width: 100%;
+    }
+
+}

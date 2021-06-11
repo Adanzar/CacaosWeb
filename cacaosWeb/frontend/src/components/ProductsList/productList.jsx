@@ -1,6 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getProducts } from '../../redux/actions/actionCreators';
+import './productList.scss';
 
 export default function ProductList() {
   const dispatch = useDispatch();
@@ -9,23 +12,21 @@ export default function ProductList() {
     dispatch(getProducts());
   }, []);
   return (
-    <ul className="list__container">
+    <ul className="list">
       {products.map((item) => (
-        <li>
-          <img src={item.imagesUrls[0]} alt="PRODUCTS" />
-          <small>
-            {item.name}
-          </small>
-          <small>
-            {' '}
-            {item.price.amount}
-            {' '}
-
-            {' '}
-            {item.price.currency}
-          </small>
-
-        </li>
+        <Link to={`/details/${item?._id}`}>
+          <li className="list__item">
+            <img className="list__item--img" src={item.imagesUrls} alt="PRODUCTS" />
+            <small className="list__item--name--price">
+              {item.name}
+              {' '}
+              {item.price.amount}
+              {' '}
+              {item.price.currency}
+            </small>
+            <small className="list__item--price" />
+          </li>
+        </Link>
       ))}
     </ul>
   );
