@@ -2,6 +2,7 @@ const { model, Schema } = require('mongoose')
 const cacosSchema = Schema({
   name: String,
   stock: Number,
+  nutritionalValue: [String],
   price: {
     amount: Number,
     currency: String
@@ -11,6 +12,7 @@ const cacosSchema = Schema({
     measure: String
   },
   ingredients: [String],
+  briefDescription: String,
   description: String,
   imagesUrls: [String],
   category: String
