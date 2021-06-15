@@ -1,8 +1,27 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-plusplus */
 /* eslint-disable no-debugger */
 import axios from 'axios';
 import actionTypes from './actionTypes';
 
 const url = process.env.REACT_APP_API_URL;
+const urlLogin = 'http://localhost:4000/login';
+export function login(email, password) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(urlLogin, { email, password });
+      dispatch({
+        type: actionTypes.LOG_IN,
+        user: data
+      });
+    } catch (error) {
+      dispatch({
+        type: actionTypes.LOG_IN,
+        user: []
+      });
+    }
+  };
+}
 
 export function getProducts() {
   return async (dispatch) => {
