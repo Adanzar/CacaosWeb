@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-underscore-dangle */
@@ -5,18 +6,18 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getOneProduct } from '../../redux/actions/actionCreators';
-import { addToCart } from '../../redux/actions/cartActionCreators';
+import addToCart from '../../redux/actions/cartActionCreators';
 import './detail.scss';
 
 export default function Details() {
   const { productId } = useParams();
   const dispatch = useDispatch();
-  const products = useSelector((store) => store.products);
-  // usar un setState para selectedProduct
-  const selectedProduct = products?.find((product) => product?._id === productId);
+  const product = useSelector((store) => store.product);
+  const cart = useSelector((store) => store.cart);
 
-  function addToBasket(product) {
-    dispatch(addToCart(product));
+  function addToBasket(selectedProduct) {
+    debugger;
+    return dispatch(addToCart(selectedProduct, cart));
   }
 
   useEffect(() => {
@@ -27,20 +28,20 @@ export default function Details() {
     <>
       <div className="card-details">
         <div className="card-details__image">
-          <img src={selectedProduct?.imagesUrls} alt={selectedProduct?.name} />
+          <img src={product?.imagesUrls} alt={product?.name} />
         </div>
         <div className="card-details__info">
-          <h2>{ selectedProduct?.name}</h2>
-          <p>{selectedProduct?.briefDescription}</p>
+          <h2>{ product?.name}</h2>
+          <p>{product?.briefDescription}</p>
           <p>
-            {selectedProduct?.price.amount}
+            {product?.price?.amount}
             {' '}
-            {selectedProduct?.price.currency}
+            {product?.price?.currency}
           </p>
         </div>
         <button
           type="button"
-          onClick={() => addToBasket(selectedProduct)}
+          onClick={() => addToBasket(product)}
         >
           ADD TO CART
         </button>
@@ -63,7 +64,7 @@ export default function Details() {
 
             <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
               <div className="card-body">
-                {selectedProduct?.nutritionalValue}
+                {product?.nutritionalValue}
               </div>
             </div>
           </div>
@@ -84,7 +85,7 @@ export default function Details() {
             </div>
             <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
               <div className="card-body">
-                {selectedProduct?.description}
+                {product?.description}
               </div>
             </div>
           </div>
@@ -105,7 +106,7 @@ export default function Details() {
             </div>
             <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
               <div className="card-body">
-                {selectedProduct?.ingredients}
+                {product?.ingredients}
               </div>
             </div>
           </div>

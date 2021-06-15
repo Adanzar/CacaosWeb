@@ -39,19 +39,20 @@ export default function Header() {
             </Link>
           </li>
           <li className="list--side-item">
-            <div>
-              {' '}
-              <FontAwesomeIcon icon={faUser} />
-            </div>
-            <ul>
-              <li>Login</li>
-            </ul>
+            <Link to="/login">
+              <div>
+                {' '}
+                <FontAwesomeIcon icon={faUser} />
+              </div>
+            </Link>
           </li>
           <li className="list--side-item">
-            <div>
-              {' '}
-              <FontAwesomeIcon icon={faShoppingBag} />
-            </div>
+            <Link to="/cart">
+              <div>
+                {' '}
+                <FontAwesomeIcon icon={faShoppingBag} />
+              </div>
+            </Link>
           </li>
         </ul>
       </nav>

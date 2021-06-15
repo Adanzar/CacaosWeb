@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { loadCart } from '../../redux/actions/cartActionCreators';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 export default function Cart() {
-  const dispatch = useDispatch();
   const cart = useSelector((store) => store.cart);
-  useEffect(() => {
-    dispatch(loadCart());
-  });
+
   return (
     <>
       <h4> Products in the cart </h4>
@@ -17,7 +13,7 @@ export default function Cart() {
             <li key={product?._id} className="cart__list--products">
               <div>
                 {product?.name}
-                {product?.price}
+                {product?.price?.amount}
               </div>
             </li>
           )) }
