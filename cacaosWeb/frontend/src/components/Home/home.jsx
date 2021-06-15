@@ -23,7 +23,7 @@ export default function Home() {
         <Link key={products[0]?.name} to={`/details/${products[0]?._id}`}>
           <img className="home__container--main-image" src={products[0]?.imagesUrls[0]} alt="PRODUCTS" />
         </Link>
-        <p>{products[0]?.description}</p>
+        <p>{products[0]?.briefDescription}</p>
         <Link className="home__container--first-link" to={`/details/${products[0]?._id}`}>
           <small>Discover it</small>
         </Link>

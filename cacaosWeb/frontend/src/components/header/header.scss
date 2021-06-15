@@ -1,3 +1,6 @@
+.navigation{
+  
+}
 .navigation__list {
     border: 1px solid rgba(0, 0, 0, 0.3);
     display: flex;
@@ -31,7 +34,10 @@
     }
     .list--side-item {
      margin: 0.7rem
-
+    }
+    .list--side-item-icon{
+        color: black;
+        font-size: 1.2rem;
     }
 
     ul ul {
@@ -49,8 +55,8 @@
         margin: 0 auto
     }
     .navigation__list--image{
-        width: 125px;
-        height: 42.25px;
+        width: 130px;
+        height: 44px;
     }
 }
 
