@@ -1,6 +1,6 @@
-const passport = require('passport')
-const localStrategy = require('passport-local')
-const User = require('../models/user.model')
+const passport = require('passport');
+const localStrategy = require('passport-local');
+const User = require('../models/user.model');
 
 passport.use(
   'signup',
@@ -11,15 +11,15 @@ passport.use(
     },
     async (email, password, done) => {
       try {
-        const user = await User.create({ email, password })
+        const user = await User.create({ email, password });
 
-        return done(null, user)
+        return done(null, user);
       } catch (error) {
-        return done(error)
+        return done(error);
       }
     }
   )
-)
+);
 
 passport.use(
   'login',
@@ -30,20 +30,20 @@ passport.use(
     },
     async (email, password, done) => {
       try {
-        const user = await User.findOne({ email })
+        const user = await User.findOne({ email });
 
         if (!user) {
-          return done(null, false, { message: 'User not found' })
+          return done(null, false, { message: 'User not found' });
         }
 
         if (!user.isValidPassword(password)) {
-          return done(null, false, { message: 'Wrong Password' })
+          return done(null, false, { message: 'Wrong Password' });
         }
 
-        return done(null, user, { message: 'Logged in Successfully' })
+        return done(null, user, { message: 'Logged in Successfully' });
       } catch (error) {
-        return done(null, false)
+        return done(null, false);
       }
     }
   )
-)
+);

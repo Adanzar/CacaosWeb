@@ -1,4 +1,5 @@
-const { model, Schema } = require('mongoose')
+const { model, Schema } = require('mongoose');
+
 const cacosSchema = Schema({
   name: String,
   stock: Number,
@@ -16,6 +17,6 @@ const cacosSchema = Schema({
   description: String,
   imagesUrls: [String],
   category: String
-})
+});
 
-module.exports = model('Cacaos', cacosSchema)
+module.exports = model('Cacaos', cacosSchema);

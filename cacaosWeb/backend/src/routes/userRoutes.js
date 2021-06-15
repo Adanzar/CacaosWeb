@@ -1,6 +1,6 @@
-const { Router } = require('express')
+const { Router } = require('express');
 
-const authRoutes = Router()
+const authRoutes = Router();
 
 authRoutes.get(
   '/profile',
@@ -9,8 +9,8 @@ authRoutes.get(
       message: 'You made it to the secure route',
       user: req.user,
       token: req.headers.authorization
-    })
+    });
   }
-)
+);
 
-module.exports = authRoutes
+module.exports = authRoutes;

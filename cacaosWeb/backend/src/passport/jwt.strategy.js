@@ -1,5 +1,5 @@
-const passport = require('passport')
-const JWTstrategy = require('passport-jwt')
+const passport = require('passport');
+const JWTstrategy = require('passport-jwt');
 
 passport.use(
   new JWTstrategy.Strategy(
@@ -9,10 +9,10 @@ passport.use(
     },
     async (token, done) => {
       try {
-        return done(null, token.user)
+        return done(null, token.user);
       } catch (error) {
-        return done(error)
+        return done(error);
       }
     }
   )
-)
+);

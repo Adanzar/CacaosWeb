@@ -1,12 +1,13 @@
-const { model, Schema } = require('mongoose')
+const { model, Schema } = require('mongoose');
 
 const userSchema = Schema({
   email: String,
-  password: String
-})
+  password: String,
+  cart: Array
+});
 
-userSchema.methods.isValidPassword = function isValidPassword (password) {
-  return password === this.password
-}
+userSchema.methods.isValidPassword = function isValidPassword(password) {
+  return password === this.password;
+};
 
-module.exports = model('User', userSchema)
+module.exports = model('User', userSchema);
