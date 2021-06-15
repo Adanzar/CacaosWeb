@@ -6,6 +6,7 @@ import {
   Switch
 } from 'react-router-dom';
 import Header from './components/Header/header';
+import Footer from './components/Footer/footer';
 import store from './redux/store/index';
 import Home from './components/Home/home';
 import Cart from './components/Cart/cart';
@@ -26,10 +27,11 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/products" component={Products} />
             <Route path="/aboutus" component={AboutUs} />
-            <Route path="/details" component={Details} />
+            <Route path="/details/:productId" component={Details} />
             <Route path="/cart" component={Cart} />
             <Route path="/login" component={Login} />
           </Switch>
+          <Footer />
         </BrowserRouter>
       </Provider>
     </>

@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import React, { useState } from 'react';
 import './header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
@@ -9,15 +11,13 @@ import {
 // import { useSelector } from 'react-redux';
 
 export default function Header() {
-//   const dispatch = useDispatch();
-  // const products = useSelector((store) => store.products);
-
+  const [prueba, setPrueba] = useState(false);
   return (
     <>
-      <nav>
+      <nav className="navigation">
         <ul className="navigation__list">
           <li className="list--side-item">
-            <FontAwesomeIcon icon={faBars} />
+            <FontAwesomeIcon className="list--side-item-icon" icon={faBars} />
             <ul className="dropdown">
               <li>Chocolate</li>
               <li>Raw Seeds</li>
@@ -26,10 +26,14 @@ export default function Header() {
             </ul>
           </li>
           <li className="list--side-item">
-            <div>
+            <div
+              role="navigation"
+              onClick={() => setPrueba(!prueba)}
+            >
               {' '}
-              <FontAwesomeIcon icon={faSearch} />
+              <FontAwesomeIcon className="list--side-item-icon" icon={faSearch} />
               {' '}
+
             </div>
           </li>
           <li className="navigation__list--logo">
@@ -39,22 +43,30 @@ export default function Header() {
             </Link>
           </li>
           <li className="list--side-item">
-            <div>
-              {' '}
-              <FontAwesomeIcon icon={faUser} />
-            </div>
-            <ul>
-              <li>Login</li>
-            </ul>
+            <Link to="/login">
+              <div>
+                {' '}
+                <FontAwesomeIcon className="list--side-item-icon" icon={faUser} />
+              </div>
+            </Link>
           </li>
           <li className="list--side-item">
-            <div>
-              {' '}
-              <FontAwesomeIcon icon={faShoppingBag} />
-            </div>
+            <Link to="/cart">
+              <div>
+                {' '}
+                <FontAwesomeIcon className="list--side-item-icon" icon={faShoppingBag} />
+              </div>
+            </Link>
           </li>
         </ul>
       </nav>
+      {prueba && (
+      <input
+        type="text"
+        placeholder="search"
+
+      />
+      )}
     </>
 
   );

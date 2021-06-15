@@ -1,7 +1,27 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-debugger */
 import axios from 'axios';
 import actionTypes from './actionTypes';
 
 const url = process.env.REACT_APP_API_URL;
+const urlLogin = 'http://localhost:4000/login';
+export function login(email, password) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(urlLogin, { email, password });
+      dispatch({
+        type: actionTypes.LOG_IN,
+        user: data
+      });
+    } catch (error) {
+      dispatch({
+        type: actionTypes.LOG_IN,
+        user: []
+      });
+    }
+  };
+}
 
 export function getProducts() {
   return async (dispatch) => {
@@ -23,8 +43,8 @@ export function getOneProduct(productId) {
     try {
       const { data } = await axios(`${url}/${productId}`);
       dispatch({
-        type: actionTypes.GET_ALL_PRODUCT,
-        products: data
+        type: actionTypes.GET_ONE_PRODUCT,
+        product: data
       });
     } catch (error) {
       dispatch({
@@ -39,7 +59,7 @@ export function createProduct(product) {
       const { data } = await axios.post(url, product);
       dispatch({
         type: actionTypes.CREATE_PRODUCT,
-        products: data
+        product: data
       });
     } catch (error) {
       dispatch({
@@ -53,7 +73,7 @@ export function modifyProduct(productId, itemToModify) {
     const { data } = await axios.put(`${url}/${productId}`, itemToModify);
     dispatch({
       type: actionTypes.UPDATE_PRODUCT,
-      products: data
+      product: data
     });
   };
 }
@@ -62,7 +82,7 @@ export function deleteProduct(productId) {
     const { data } = await axios.delete(`${url}/${productId}`);
     dispatch({
       type: actionTypes.DELETE_PRODUCT,
-      products: data
+      product: data
     });
   };
 }

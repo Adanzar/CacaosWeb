@@ -1,7 +1,13 @@
-// .list__container{
-// display: ;
-// }
 
-img{
+.home__container--main-image{
     width: 100%
+}
+.home__container--firs-link{
+    text-decoration: none;
+}
+.card__link{
+    text-decoration: none;
+    .card__image{
+        width:100%
+}
 }
