@@ -8,15 +8,16 @@ import './productList.scss';
 export default function ProductList() {
   const dispatch = useDispatch();
   const products = useSelector((store) => store.products);
+  const product = useSelector((store) => store.product);
   useEffect(() => {
     dispatch(getProducts());
-  }, []);
+  }, [product]);
   return (
     <ul className="list">
       {products.map((item) => (
         <Link to={`/details/${item?._id}`}>
           <li className="list__item">
-            <img className="list__item--img" src={item.imagesUrls} alt="PRODUCTS" />
+            <img className="list__item--img" src={item.imagesUrls} alt={item.name} />
             <small className="list__item--name--price">
               {item.name}
               {' '}
@@ -24,7 +25,6 @@ export default function ProductList() {
               {' '}
               {item.price.currency}
             </small>
-            <small className="list__item--price" />
           </li>
         </Link>
       ))}

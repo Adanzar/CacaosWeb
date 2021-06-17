@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getOneProduct } from '../../redux/actions/actionCreators';
 import addToCart from '../../redux/actions/cartActionCreators';
@@ -45,6 +45,14 @@ export default function Details() {
         >
           ADD TO CART
         </button>
+        <div>
+
+          <Link to={`/update-product/${product?._id}`}>
+            <button type="button">
+              Update
+            </button>
+          </Link>
+        </div>
         <div id="accordion">
           <div className="card">
             <div className="card-header" id="headingOne">
@@ -64,7 +72,11 @@ export default function Details() {
 
             <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
               <div className="card-body">
-                {product?.nutritionalValue}
+                <ul>
+                  <li>
+                    {product?.nutritionalValue}
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -106,7 +118,13 @@ export default function Details() {
             </div>
             <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
               <div className="card-body">
-                {product?.ingredients}
+                {product?.ingredients?.map((ingredient) => (
+                  <ul>
+                    <li>
+                      {ingredient}
+                    </li>
+                  </ul>
+                ))}
               </div>
             </div>
           </div>
