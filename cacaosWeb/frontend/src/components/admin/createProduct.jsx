@@ -19,6 +19,9 @@ export default function AddProduct() {
   const [weightMeasureInput, setWeightMeasureInput] = useState('');
   const [ingredientsInput, setIngredientsInput] = useState('');
   const [ingredientsArr, setIngredientsArr] = useState([]);
+  const [nutritionalInput, setNutritionalInput] = useState('');
+  const [nutritionalValueArr, setNutritionalValueArr] = useState([]);
+  const [imagesUrlsInput, setImagesUrlsInput] = useState('');
   const [descriptionInput, setDescriptionInput] = useState('');
   const [briefDescriptionInput, setBriefDescriptionInput] = useState('');
   const [categoryInput, setCategoryInput] = useState('');
@@ -27,6 +30,11 @@ export default function AddProduct() {
   function addNewIngredients() {
     setIngredientsArr([...ingredientsArr, ingredientsInput]);
     setIngredientsInput('');
+  }
+
+  function addNutritionalValue() {
+    setNutritionalValueArr([...nutritionalValueArr, nutritionalInput]);
+    setNutritionalInput('');
   }
 
   function addProduct(event) {
@@ -39,9 +47,15 @@ export default function AddProduct() {
         amount: priceAmountInput,
         currency: priceCurrencyInput
       },
+      weight: {
+        quantity: weightQuantityInput,
+        measure: weightMeasureInput
+      },
+      ingredients: ingredientsArr,
+      nutritionalValue: nutritionalValueArr,
       briefDescription: briefDescriptionInput,
       category: categoryInput,
-      ingredients: ingredientsArr
+      imagesUrls: imagesUrlsInput
     }));
   }
 
@@ -168,6 +182,36 @@ export default function AddProduct() {
               }}
               value={categoryInput}
             />
+          </label>
+          <label htmlFor="imagesUrls">
+            Image
+            <input
+              type="text"
+              name="imagesUrls"
+              onChange={(event) => {
+                setImagesUrlsInput(event.target.value);
+              }}
+              value={imagesUrlsInput}
+            />
+          </label>
+          <label htmlFor="nutritionalValue">
+            Nutritional Value
+            <input
+              type="text"
+              name="nutritionalValue"
+              onChange={(event) => {
+                setNutritionalInput(event.target.value);
+              }}
+              value={nutritionalInput}
+            />
+            <span
+              role="navigation"
+              onClick={(event) => {
+                addNutritionalValue(event);
+              }}
+            >
+              <FontAwesomeIcon className="list--side-item-icon" icon={faPlus} />
+            </span>
           </label>
           <button
             type="submit"

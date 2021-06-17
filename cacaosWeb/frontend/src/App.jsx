@@ -15,6 +15,8 @@ import AboutUs from './components/AboutUs/aboutUs';
 import Products from './components/ProductsList/productList';
 import './App.scss';
 import Details from './components/Details/details';
+import AddProduct from './components/admin/createProduct';
+import UpdateProduct from './components/admin/updateProduct';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
             <Route path="/details/:productId" component={Details} />
             <Route path="/cart" component={Cart} />
             <Route path="/login" component={Login} />
+            <Route path="/add-product" component={AddProduct} />
+            <Route path="/update-product/:productId" component={UpdateProduct} />
           </Switch>
           <Footer />
         </BrowserRouter>
