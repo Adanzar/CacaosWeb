@@ -81,7 +81,7 @@ export default function AddProduct() {
             />
           </label>
           <label htmlFor="price">
-            price
+            Price
             <input
               type="number"
               name="price"
@@ -102,7 +102,7 @@ export default function AddProduct() {
             />
           </label>
           <label htmlFor="weight">
-            weight
+            Weight
             <input
               type="number"
               name="weight"

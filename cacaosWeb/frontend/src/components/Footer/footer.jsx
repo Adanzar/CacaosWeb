@@ -12,9 +12,6 @@ export default function Footer() {
         Chocolates
       </li>
       <li className="footer__list--item">
-        Espai Xocolata
-      </li>
-      <li className="footer__list--item">
         Online store
       </li>
       <li className="footer__list--item">
