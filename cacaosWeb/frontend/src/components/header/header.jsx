@@ -2,11 +2,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import './header.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useHistory } from 'react-router-dom';
-import {
-  faBars, faSearch, faUser, faShoppingBag
-} from '@fortawesome/free-solid-svg-icons';
+import images from '../../constants/images';
 
 export default function Header() {
   const history = useHistory();
@@ -18,21 +15,23 @@ export default function Header() {
         <ul className="navigation__list">
           <li className="list--side-item">
             <Link to="/products">
-              <FontAwesomeIcon className="list--side-item-icon" icon={faBars} />
+              <img src="https://img.icons8.com/windows/30/000000/drag-list-up.png" alt="" />
             </Link>
           </li>
           <li className="list--side-item">
+            {/* list__item--side */}
             <div
               role="navigation"
               onClick={seeAllProducts}
             >
               {' '}
-              <FontAwesomeIcon className="list--side-item-icon" icon={faSearch} />
+              <img src="https://img.icons8.com/fluent-systems-regular/30/000000/search--v1.png" alt="" />
               {' '}
 
             </div>
           </li>
           <li className="navigation__list--logo">
+            {/* list__item--center */}
             <Link to="/">
               {' '}
               <img className="navigation__list--logo-image" src="https://trello-attachments.s3.amazonaws.com/60755d2282c14f477515af94/60be309a34029d4dc9bbb679/c905a5e97b08b4dc426bb5f02ebd0fce/Cacaos_LOGO_original.png" alt="CACAOS LOGO" />
@@ -42,7 +41,7 @@ export default function Header() {
             <Link to="/login">
               <div>
                 {' '}
-                <FontAwesomeIcon className="list--side-item-icon" icon={faUser} />
+                <img src={images.login.src} alt={images.login.alt} />
               </div>
             </Link>
           </li>
@@ -50,7 +49,7 @@ export default function Header() {
             <Link to="/cart">
               <div>
                 {' '}
-                <FontAwesomeIcon className="list--side-item-icon" icon={faShoppingBag} />
+                <img src="https://img.icons8.com/ios/30/000000/shopping-bag--v3.png" alt="" />
               </div>
             </Link>
           </li>
