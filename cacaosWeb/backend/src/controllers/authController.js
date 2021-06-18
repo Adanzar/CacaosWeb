@@ -28,11 +28,17 @@ function authController() {
             async (error) => {
               if (error) return next(error);
 
-              const data = { _id: user._id, email: user.email };
+              const data = {
+                _id: user._id,
+                email: user.email,
+                name: user.name,
+                lastName: user.lastName,
+                cart: user.cart
+              };
               const token = jwt.sign(
                 { user: data },
                 process.env.JWT_SECRET,
-                { expiresIn: '30m' }
+                { expiresIn: '60m' }
               );
               const refreshToken = jwt.sign(
                 { user: data },
@@ -43,8 +49,7 @@ function authController() {
 
               return res.json({
                 token,
-                refreshToken,
-                user
+                refreshToken
               });
             }
           );
