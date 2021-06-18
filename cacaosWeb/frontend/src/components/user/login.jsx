@@ -6,15 +6,10 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-
-  function refreshNewEmail(event) {
-    setEmail(event.target.value);
-  }
-  function refreshNewPassword(event) {
-    setPassword(event.target.value);
-  }
+  // const user = useSelector((store) => store.user);
 
   function sendLogIn() {
+    console.log(email, password);
     dispatch(login(email, password));
   }
 
@@ -24,18 +19,18 @@ export default function Login() {
       <input
         type="email"
         value={email}
-        onChange={refreshNewEmail}
+        onChange={(event) => { setEmail(event.target.value); }}
         placeholder="Email"
       />
       <input
         type="password"
         value={password}
-        onChange={refreshNewPassword}
+        onChange={(event) => { setPassword(event.target.value); }}
         placeholder="Password"
       />
       <button
         type="button"
-        onClick={sendLogIn()}
+        onClick={sendLogIn}
       >
         LOG IN
       </button>

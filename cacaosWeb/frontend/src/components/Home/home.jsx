@@ -9,12 +9,14 @@ import './home.scss';
 export default function Home() {
   const dispatch = useDispatch();
   const products = useSelector((store) => store.products);
+  // const user = useSelector((store) => store.user);
+  const accesstoken = useSelector((store) => store.accesstoken);
   const thisWeekProducts = [...products];
   const history = useHistory();
   const seeAllProducts = () => history.push('/products');
 
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(getProducts({ headers: { authorization: accesstoken?.token } }));
   }, []);
 
   return (
