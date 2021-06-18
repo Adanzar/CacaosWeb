@@ -1,11 +1,6 @@
-// .footer__list{
-//      .footer__list--item{
-//          text-align: center;
-//      }
-// }
 
 .footer__list {
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid white(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +8,14 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: rgb(112,63,7);
+    background-color: black;
+
+    li  {
+        border: 1px solid white;
+    }
+    .footer__list--container{
+        padding: 0
+    }
     .footer__list--item{
         display: flex;
         align-content: center;
@@ -24,8 +26,12 @@
 
     .footer__list--followus {
         padding: 8px;
+        margin: 8px;
         position: relative;
         color: white;
+        .list__followus--icon{
+            
+        }
     }
     .footer__list--copyright {
         padding: 8px;
