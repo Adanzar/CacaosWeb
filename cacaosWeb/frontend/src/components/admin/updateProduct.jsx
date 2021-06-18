@@ -148,7 +148,7 @@ export default function UpdateProduct() {
               <ul>
 
                 {ingredientsArr.map((item) => (
-                  <li>
+                  <li key={item}>
                     {item}
                   </li>
                 ))}
