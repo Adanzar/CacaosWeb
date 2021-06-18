@@ -1,37 +1,45 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faPlus
+  faTrashAlt, faPlus
 } from '@fortawesome/free-solid-svg-icons';
-import { modifyProduct, getProducts } from '../../redux/actions/actionCreators';
+import { modifyProduct, getOneProduct } from '../../redux/actions/actionCreators';
 
 export default function UpdateProduct() {
+  const product = useSelector((store) => store.product);
   const { productId } = useParams();
-  const [productName, setProductName] = useState('');
-  const [stockInput, setStockInput] = useState('');
-  const [priceAmountInput, setPriceAmountInput] = useState('');
-  const [priceCurrencyInput, setPriceCurrencyInput] = useState('');
-  const [weightQuantityInput, setWeightQuantityInput] = useState('');
-  const [weightMeasureInput, setWeightMeasureInput] = useState('');
+  const [productName, setProductName] = useState(product?.name);
+  const [stockInput, setStockInput] = useState(product?.stock);
+  const [priceAmountInput, setPriceAmountInput] = useState(product?.price?.amount);
+  const [priceCurrencyInput, setPriceCurrencyInput] = useState(product?.price?.weight);
+  const [weightQuantityInput, setWeightQuantityInput] = useState(product?.weight?.quantity);
+  const [weightMeasureInput, setWeightMeasureInput] = useState(product?.weight?.measure);
   const [ingredientsInput, setIngredientsInput] = useState('');
-  const [ingredientsArr, setIngredientsArr] = useState([]);
-  const [nutritionalInput, setNutritionalInput] = useState('');
+  const [ingredientsArr, setIngredientsArr] = useState(product?.ingredients);
+  const [nutritionalInput, setNutritionalInput] = useState(product?.nutritionalValue);
   const [nutritionalValueArr, setNutritionalValueArr] = useState([]);
-  const [imagesUrlsInput, setImagesUrlsInput] = useState('');
-  const [descriptionInput, setDescriptionInput] = useState('');
-  const [briefDescriptionInput, setBriefDescriptionInput] = useState('');
-  const [categoryInput, setCategoryInput] = useState('');
+  const [imagesUrlsInput, setImagesUrlsInput] = useState(product?.imagesUrls);
+  const [descriptionInput, setDescriptionInput] = useState(product?.description);
+  const [briefDescriptionInput, setBriefDescriptionInput] = useState(product?.briefDescription);
+  const [categoryInput, setCategoryInput] = useState(product?.category);
   const dispatch = useDispatch();
   useEffect(() => {
-    getProducts();
+    getOneProduct(productId);
   }, []);
+  function deleteIngredients() {
+    setIngredientsArr([]);
+  }
   function addNewIngredients() {
     setIngredientsArr([...ingredientsArr, ingredientsInput]);
     setIngredientsInput('');
+  }
+  function deleteNutritionalValue() {
+    setNutritionalValueArr([]);
   }
 
   function addNutritionalValue() {
@@ -83,7 +91,7 @@ export default function UpdateProduct() {
             />
           </label>
           <label htmlFor="price">
-            price
+            Price
             <input
               type="number"
               name="price"
@@ -104,7 +112,7 @@ export default function UpdateProduct() {
             />
           </label>
           <label htmlFor="weight">
-            weight
+            Weight
             <input
               type="number"
               name="weight"
@@ -136,6 +144,22 @@ export default function UpdateProduct() {
             />
           </label>
           <label htmlFor="ingredients">
+            <div className="ingredients__list-container">
+              <ul>
+
+                {ingredientsArr.map((item) => (
+                  <li>
+                    {item}
+                  </li>
+                ))}
+
+              </ul>
+              <div
+                onClick={deleteIngredients}
+              >
+                <FontAwesomeIcon className="list--side-item-icon" icon={faTrashAlt} />
+              </div>
+            </div>
             Ingredients
             <input
               type="text"
@@ -197,6 +221,22 @@ export default function UpdateProduct() {
             />
           </label>
           <label htmlFor="nutritionalValue">
+            <div className="nutritionalValue__list-container">
+              <ul>
+
+                {ingredientsArr.map((item) => (
+                  <li>
+                    {item}
+                  </li>
+                ))}
+
+              </ul>
+              <div
+                onClick={deleteNutritionalValue}
+              >
+                <FontAwesomeIcon className="list--side-item-icon" icon={faTrashAlt} />
+              </div>
+            </div>
             Nutritional Value
             <input
               type="text"

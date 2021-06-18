@@ -19,35 +19,38 @@ export default function Home() {
 
   return (
     <>
-      <div className="home__container">
-        <Link key={products[0]?.name} to={`/details/${products[0]?._id}`}>
-          <img className="home__container--main-image" src={products[0]?.imagesUrls[0]} alt="PRODUCTS" />
+      <div className="home">
+        <Link className="home__main" key={products[0]?.name} to={`/details/${products[0]?._id}`}>
+          <img className="home__main-image" src={products[0]?.imagesUrls[0]} alt={products[0]?.name} />
+          <p className="home__main-description">{products[0]?.briefDescription}</p>
+          <small className="home__main-link">Discover it</small>
         </Link>
-        <p>{products[0]?.briefDescription}</p>
-        <Link className="home__container--first-link" to={`/details/${products[0]?._id}`}>
-          <small>Discover it</small>
-        </Link>
-        <ul className="">
+        <ul className="home__list--container">
           <h2>This weeks selection</h2>
-          {thisWeekProducts.slice(1, 2).map((item) => (
-            <Link className="card__link" to={`/details/${item?._id}`}>
-              <li className="card">
-                <img className="card__image" src={item.imagesUrls} alt="PRODUCTS" />
-                <small className="card__name">
+          {thisWeekProducts.slice(1, 4).map((item) => (
+            <Link className="home__list-link" to={`/details/${item?._id}`}>
+              <li key={item._id} className="home__list-card">
+                <img className="list-card__image" src={item.imagesUrls} alt="PRODUCTS" />
+                <small className="list-card__info">
                   {item.name}
+                  {' '}
+                  {item.weight.quantity}
+                  {' '}
+                  {item.weight.measure}
                 </small>
-                <small className="card__price">
+                <small className="list-card__price">
                   {' '}
                   {item.price.amount}
                   {' '}
                   {item.price.currency}
+
                 </small>
               </li>
             </Link>
           ))}
         </ul>
         <button
-          className="home__container--btn-products"
+          className="home__products--btn"
           type="button"
           onClick={seeAllProducts}
         >

@@ -1,13 +1,101 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-.home__container--main-image{
-    width: 100%
-}
-.home__container--firs-link{
-    text-decoration: none;
-}
-.card__link{
-    text-decoration: none;
-    .card__image{
-        width:100%
-}
+    h2{
+        text-align: center;
+        font-weight: bold;
+        font-style: italic;
+    }
+    
+    .home__main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-decoration: none;
+        color: black;
+        text-align: center;
+        font-style: italic;
+
+    .home__main-link{
+       
+            animation: jump 5s infinite linear;
+            position:relative;
+            color: white;
+            border: 1px solid white;
+            background-color: black;
+            padding: 0.8rem;
+            margin: 2rem;
+            font-size: large
+
+            
+        }
+        @keyframes jump {
+            0%{top:0em}
+            40%{top:0em}
+            43%{top:-0.9em}
+            46%{top:0em}
+            48%{top:-0.4em}
+            50%{top:0em}
+            100%{top:0em;}
+                }
+
+        .home__main-description{
+            padding: 1rem;
+            margin: 1rem;
+            font-family: "Domaine Text Regular",sans-serif;
+        }
+
+        .home__main-image{
+            width: 100%
+        }
+
+    }
+
+    .home__list-link{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .home__list-card{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+        border: 0.1rem solid burlywood;
+        background-color:rgb(239, 239, 239);
+        border-radius: 29px;
+        margin: 20px;
+        padding: 12px;
+    
+        .list-card__image{
+            width:100%
+        }
+    }
+    .home__products--btn {
+        display: inline-block;
+        background-color: black;
+        border:0.16em solid #FFFFFF;
+        padding: 0.8rem;
+        margin: 2rem;
+        box-sizing: border-box;
+        text-decoration:none;
+        text-transform:uppercase;
+        font-family:'Roboto',sans-serif;
+        font-weight:400;
+        color:#FFFFFF;
+        text-align:center;
+        transition: all 0.15s;
+            }
+    .home__products--btn:hover{
+        color:#DDDDDD;
+        border-color:#181717;
+            }
+    .home__products--btn:active{
+        color:#BBBBBB;
+        border-color:#BBBBBB;
+            }
 }
