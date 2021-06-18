@@ -27,7 +27,6 @@ app.use('/',
   authRoutes);
 
 app.use('/api/cacaos',
-  passport.authenticate('jwt', { session: false }),
   cacaoRoutes);
 
 app.use('/user',

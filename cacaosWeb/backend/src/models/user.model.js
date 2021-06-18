@@ -5,7 +5,8 @@ const userSchema = Schema({
   password: String,
   name: String,
   lastName: String,
-  cart: Array
+  cart: Array,
+  isAdmin: Boolean
 });
 
 userSchema.methods.isValidPassword = function isValidPassword(password) {
