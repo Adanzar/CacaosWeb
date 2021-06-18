@@ -1,15 +1,17 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useState } from 'react';
+import React from 'react';
 import './header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   faBars, faSearch, faUser, faShoppingBag
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
-  const [prueba, setPrueba] = useState(false);
+  const history = useHistory();
+  const seeAllProducts = () => history.push('/products');
+
   return (
     <>
       <nav className="navigation">
@@ -22,7 +24,7 @@ export default function Header() {
           <li className="list--side-item">
             <div
               role="navigation"
-              onClick={() => setPrueba(!prueba)}
+              onClick={seeAllProducts}
             >
               {' '}
               <FontAwesomeIcon className="list--side-item-icon" icon={faSearch} />
@@ -54,12 +56,7 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      {prueba && (
-      <input
-        type="text"
-        placeholder="search"
-      />
-      )}
+
     </>
   );
 }

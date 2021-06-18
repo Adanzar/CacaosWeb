@@ -10,7 +10,7 @@ import Footer from './components/Footer/footer';
 import store from './redux/store/index';
 import Home from './components/Home/home';
 import Cart from './components/Cart/cart';
-import Login from './components/Login/login';
+import Login from './components/user/login';
 import AboutUs from './components/AboutUs/aboutUs';
 import Products from './components/ProductsList/productList';
 import './App.scss';

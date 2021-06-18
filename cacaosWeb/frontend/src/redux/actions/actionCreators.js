@@ -6,6 +6,24 @@ import actionTypes from './actionTypes';
 
 const url = process.env.REACT_APP_API_URL;
 const urlLogin = 'http://localhost:4000/login';
+const urlSignUp = 'http://localhost:4000/signup';
+
+export function signUp(newUserInfo) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(urlSignUp, newUserInfo);
+      dispatch({
+        type: actionTypes.SIGN_UP,
+        user: data
+      });
+    } catch (error) {
+      dispatch({
+        type: actionTypes.SIGN_UP,
+        user: {}
+      });
+    }
+  };
+}
 export function login(email, password) {
   return async (dispatch) => {
     try {
