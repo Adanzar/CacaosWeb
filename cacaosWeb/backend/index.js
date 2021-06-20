@@ -3,7 +3,7 @@ const cors = require('cors');
 const debug = require('debug')('app');
 const chalk = require('chalk');
 const morgan = require('morgan');
-// const passport = require('passport');
+const passport = require('passport');
 
 require('dotenv').config();
 
@@ -23,13 +23,14 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/', authRoutes);
+app.use('/',
+  authRoutes);
 
 app.use('/api/cacaos',
   cacaoRoutes);
 
 app.use('/user',
-  // passport.authenticate('jwt', { session: false }),
+  passport.authenticate('jwt', { session: false }),
   userRoutes);
 
 app.listen(

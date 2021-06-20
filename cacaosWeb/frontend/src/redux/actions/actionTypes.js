@@ -9,5 +9,7 @@ export default {
   LOAD_CART: 'LOAD_CART',
   LOG_IN: 'LOG_IN',
   LOG_OUT: 'LOG_OUT',
-  SIGN_UP: 'SIGN_UP'
+  SIGN_UP: 'SIGN_UP',
+  GET_PROFILE: 'GET_PROFILE'
+
 };

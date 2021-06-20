@@ -23,6 +23,8 @@ module.exports = {
     'global-require': 0,
     'eslint linebreak-style': [0, 'error', 'windows'],
     'comma-dangle': [2, 'never'],
-    'no-underscore-dangle': 0
+    'no-underscore-dangle': 0,
+    'no-noninteractive-element-interactions': 0,
+    'click-events-have-key-events': 0
   }
 };

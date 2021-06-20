@@ -3,7 +3,10 @@ const { model, Schema } = require('mongoose');
 const userSchema = Schema({
   email: String,
   password: String,
-  cart: Array
+  name: String,
+  lastName: String,
+  cart: Array,
+  isAdmin: Boolean
 });
 
 userSchema.methods.isValidPassword = function isValidPassword(password) {
