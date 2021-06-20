@@ -32,7 +32,8 @@ function authController() {
                 email: user.email,
                 name: user.name,
                 lastName: user.lastName,
-                cart: user.cart
+                cart: user.cart,
+                isAdmin: user.isAdmin
               };
               const token = jwt.sign(
                 { user: data },

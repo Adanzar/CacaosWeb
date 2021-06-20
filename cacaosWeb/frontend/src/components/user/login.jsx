@@ -51,7 +51,7 @@ export default function Login() {
         <div className="login__signup--question">
           Do you not have and account?
         </div>
-        <div className="login__signup__button" onClick={goToSignUp}>
+        <div className="login__signup--button" onClick={goToSignUp}>
           Create account
         </div>
 
