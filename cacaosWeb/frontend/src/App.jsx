@@ -5,7 +5,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import Header from './components/Header/header';
+import Header from './components/header/header';
 import Footer from './components/Footer/footer';
 import store from './redux/store/index';
 import Home from './components/Home/home';
