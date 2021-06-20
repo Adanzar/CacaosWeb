@@ -5,7 +5,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getOneProduct } from '../../redux/actions/actionCreators';
+import { getOneProduct, deleteProduct } from '../../redux/actions/actionCreators';
 import addToCart from '../../redux/actions/cartActionCreators';
 import './detail.scss';
 
@@ -14,6 +14,11 @@ export default function Details() {
   const dispatch = useDispatch();
   const product = useSelector((store) => store.product);
   const cart = useSelector((store) => store.cart);
+  const user = useSelector((store) => store.user);
+
+  function takeOutProduct(id) {
+    dispatch(deleteProduct(id));
+  }
 
   function addToBasket(selectedProduct) {
     debugger;
@@ -26,6 +31,7 @@ export default function Details() {
 
   return (
     <>
+
       <div className="card-details">
         <div className="card-details__image">
           <img src={product?.imagesUrls} alt={product?.name} />
@@ -45,14 +51,19 @@ export default function Details() {
         >
           ADD TO CART
         </button>
-        <div>
+        { user?.user?.isAdmin && (
 
+        <div className="card__details--admin-btn">
+          <div role="navigation" className="admin__btns" onClick={() => { takeOutProduct(productId); }}>
+            Delete
+          </div>
           <Link to={`/update-product/${product?._id}`}>
-            <button type="button">
+            <button className="admin__btns" type="button">
               Update
             </button>
           </Link>
         </div>
+        )}
         <div id="accordion">
           <div className="card">
             <div className="card-header" id="headingOne">
@@ -73,9 +84,13 @@ export default function Details() {
             <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
               <div className="card-body">
                 <ul>
-                  <li>
-                    {product?.nutritionalValue}
-                  </li>
+                  {product?.nutritionalValue?.map((nutritionalValue) => (
+                    <ul key={nutritionalValue}>
+                      <li key={nutritionalValue}>
+                        {nutritionalValue}
+                      </li>
+                    </ul>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -119,8 +134,8 @@ export default function Details() {
             <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
               <div className="card-body">
                 {product?.ingredients?.map((ingredient) => (
-                  <ul>
-                    <li>
+                  <ul key={ingredient}>
+                    <li key={ingredient}>
                       {ingredient}
                     </li>
                   </ul>
@@ -130,6 +145,7 @@ export default function Details() {
           </div>
         </div>
       </div>
+
     </>
   );
 }

@@ -9,12 +9,14 @@ import './home.scss';
 export default function Home() {
   const dispatch = useDispatch();
   const products = useSelector((store) => store.products);
+  // const user = useSelector((store) => store.user);
+  const accesstoken = useSelector((store) => store.accesstoken);
   const thisWeekProducts = [...products];
   const history = useHistory();
   const seeAllProducts = () => history.push('/products');
 
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(getProducts({ headers: { authorization: accesstoken?.token } }));
   }, []);
 
   return (
@@ -30,7 +32,7 @@ export default function Home() {
           {thisWeekProducts.slice(1, 4).map((item) => (
             <Link className="home__list-link" to={`/details/${item?._id}`}>
               <li key={item._id} className="home__list-card">
-                <img className="list-card__image" src={item.imagesUrls} alt="PRODUCTS" />
+                <img className="list-card__image" src={item.imagesUrls} alt={item.name} />
                 <small className="list-card__info">
                   {item.name}
                   {' '}
