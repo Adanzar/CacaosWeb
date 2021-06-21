@@ -5,19 +5,35 @@
     border: 1px solid rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
+    justify-content: space-between;
     list-style-type: none;
+    width: 100%;
 
-    .list--side-item {
-     margin: 0.7rem;
-     padding: 8px
-    }
-    .list--side-item-icon{
-        font-size: 1.2rem;
-        color: rgb(112,63,7)
+    .list__side--item-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin: 1rem, 2rem;
+        
+
+        .list--side-item {
+            margin-top: 0.7rem;
+            margin-bottom: 0.7rem;
+            padding-top: 10px;
+            padding-bottom: 10px
        
+           }
+           .list--side-item-icon{
+               font-size: 1.2rem;
+               color: rgb(112,63,7);
+               margin: 10px;
+               padding: 10px, 20px;
+           }
     }
+
+  
     .navigation__list--logo{
-        margin: 0 auto
+       margin: 0;
     }
     .navigation__list--logo-image{
         width: 130px;

@@ -27,11 +27,15 @@
     }
 
     .footer__list--followus {
-        padding: 8px;
-        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: 15px;
         color: white;
+        
         .list__followus--icon{
-            
+            margin-left: 1rem;
+            margin-right: 1rem;
+            font-size: 22px;
         }
     }
     .footer__list--copyright {
@@ -39,11 +43,5 @@
         position: relative;
         color: white;
     }
-    .navigation__list--logo{
-        margin: 0 auto
-    }
-    .navigation__list--image{
-        width: 125px;
-        height: 42.25px;
-    }
+   
 }
