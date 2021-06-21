@@ -95,7 +95,7 @@ export default function AddProduct() {
             <input
               type="text"
               name="price"
-              placeholder="$, € "
+              placeholder="$, €"
               onChange={(event) => {
                 setPriceCurrencyInput(event.target.value);
               }}
