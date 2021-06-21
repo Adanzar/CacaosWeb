@@ -16,15 +16,15 @@ export default function ProductList() {
     dispatch(getProducts());
   }, [product]);
   return (
-    <>
+    <div className="products">
       <input
-        className="search"
+        className="products__search"
         type="text"
         onChange={(event) => {
           setSearch(event.target.value);
         }}
       />
-      <ul className="list">
+      <ul className="products__list">
         {products.filter((item) => {
           if (search === '') {
             return item;
@@ -32,17 +32,17 @@ export default function ProductList() {
             return item;
           }
         }).map((item) => (
-          <Link className="home__list-link" to={`/details/${item?._id}`}>
-            <li key={item._id} className="home__list-card">
-              <img className="list-card__image" src={item.imagesUrls} alt="PRODUCTS" />
-              <small className="list-card__info">
+          <Link className="products__list-link" to={`/details/${item?._id}`}>
+            <li key={item._id} className="products__list-card">
+              <img className="products__list--card-image" src={item.imagesUrls} alt={item.name} />
+              <small className="products__list--card-info">
                 {item.name}
                 {' '}
                 {item.weight.quantity}
                 {' '}
                 {item.weight.measure}
               </small>
-              <small className="list-card__price">
+              <small className="products__list--card-price">
                 {' '}
                 {item.price.amount}
                 {' '}
@@ -52,6 +52,6 @@ export default function ProductList() {
           </Link>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

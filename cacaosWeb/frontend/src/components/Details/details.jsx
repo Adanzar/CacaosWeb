@@ -14,6 +14,7 @@ export default function Details() {
   const dispatch = useDispatch();
   const product = useSelector((store) => store.product);
   const cart = useSelector((store) => store.cart);
+  const token = useSelector((store) => store.accesstoken);
 
   function takeOutProduct(id) {
     dispatch(deleteProduct(id));
@@ -50,6 +51,7 @@ export default function Details() {
         >
           ADD TO CART
         </button>
+        {token?.user?.isAdmin && (
         <div className="card__details--admin-btn">
           <div role="navigation" className="admin__btns" onClick={() => { takeOutProduct(productId); }}>
             Delete
@@ -60,6 +62,8 @@ export default function Details() {
             </button>
           </Link>
         </div>
+        )}
+
         <div id="accordion">
           <div className="card">
             <div className="card-header" id="headingOne">

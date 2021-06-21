@@ -18,9 +18,7 @@ export default function Login() {
     dispatch(login(email, password));
   }
   useEffect(() => {
-    if (user?.token) {
-      dispatch(getAccessToken(user?.token));
-    }
+    dispatch(getAccessToken(user.token));
   }, [user]);
 
   return (
