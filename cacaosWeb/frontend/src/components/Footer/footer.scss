@@ -7,23 +7,27 @@
     justify-content: flex-end;
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-color: #B0876C;
+    width: 100%;
 
     li  {
+        display: flex;
+        justify-content: center;
         border: 1px solid white;
         list-style-type: none;
+        width: 100%;
+        padding: 15px;
+
     }
     .footer__list--item{
         display: flex;
-        align-content: center;
+        align-items: center;
         padding: 8px;
-        position: relative;
         color: white;
     }
 
     .footer__list--followus {
         padding: 8px;
-        margin: 8px;
         position: relative;
         color: white;
         .list__followus--icon{

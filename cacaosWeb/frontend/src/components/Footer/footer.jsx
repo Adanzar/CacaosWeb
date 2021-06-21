@@ -12,12 +12,8 @@ export default function Footer() {
   return (
     <>
       <ul className="footer__list">
-
         <li className="footer__list--item">
           Chocolates
-        </li>
-        <li className="footer__list--item">
-          Online store
         </li>
         { !inTouch
           ? (
