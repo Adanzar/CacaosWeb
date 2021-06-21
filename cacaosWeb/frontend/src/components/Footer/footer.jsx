@@ -10,8 +10,8 @@ import './footer.scss';
 export default function Footer() {
   const [inTouch, setInTouch] = useState(false);
   return (
-    <div className="footer__list">
-      <ul className="footer__list--container">
+    <>
+      <ul className="footer__list">
 
         <li className="footer__list--item">
           Chocolates
@@ -42,7 +42,7 @@ export default function Footer() {
           @ 2021 CACAOS all rights reserved
         </li>
       </ul>
-    </div>
+    </>
 
   );
 }

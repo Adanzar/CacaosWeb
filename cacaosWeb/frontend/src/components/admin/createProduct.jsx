@@ -9,6 +9,7 @@ import {
   faPlus
 } from '@fortawesome/free-solid-svg-icons';
 import { createProduct } from '../../redux/actions/actionCreators';
+import './createProduct.scss';
 
 export default function AddProduct() {
   const [productName, setProductName] = useState('');
@@ -61,16 +62,16 @@ export default function AddProduct() {
 
   return (
     <>
-      <div className="addProduct__container">
-        <h3>Welcome back!</h3>
+      <div className="addProduct-header">
+        <h3>Create a new product!</h3>
       </div>
-      <div className="addProduct__container--form">
+      <div className="form-section">
         <form onSubmit={(event) => {
           addProduct(event);
         }}
         >
-          <label htmlFor="name">
-            Name
+          <label className="form-section__name" htmlFor="name">
+            Name:
             <input
               type="text"
               name="name"
@@ -80,12 +81,12 @@ export default function AddProduct() {
               value={productName}
             />
           </label>
-          <label htmlFor="price">
-            Price
+          <label className="form-section__price" htmlFor="price">
+            Price:
             <input
               type="number"
               name="price"
-              placeholder="write amount"
+              placeholder="Amount"
               onChange={(event) => {
                 setPriceAmountInput(event.target.value);
               }}
@@ -94,19 +95,19 @@ export default function AddProduct() {
             <input
               type="text"
               name="price"
-              placeholder="write currency"
+              placeholder="$, € "
               onChange={(event) => {
                 setPriceCurrencyInput(event.target.value);
               }}
               value={priceCurrencyInput}
             />
           </label>
-          <label htmlFor="weight">
-            Weight
+          <label className="form-section__weight" htmlFor="weight">
+            Weight:
             <input
               type="number"
               name="weight"
-              placeholder="write quantity"
+              placeholder="Quantity"
               onChange={(event) => {
                 setWeightQuantityInput(event.target.value);
               }}
@@ -115,15 +116,15 @@ export default function AddProduct() {
             <input
               type="text"
               name="weight"
-              placeholder="write measure"
+              placeholder="Measure"
               onChange={(event) => {
                 setWeightMeasureInput(event.target.value);
               }}
               value={weightMeasureInput}
             />
           </label>
-          <label htmlFor="stock">
-            Stock
+          <label className="form-section__stock" htmlFor="stock">
+            Stock:
             <input
               type="number"
               name="stock"
@@ -133,8 +134,8 @@ export default function AddProduct() {
               value={stockInput}
             />
           </label>
-          <label htmlFor="ingredients">
-            Ingredients
+          <label className="form-section__ingredients" htmlFor="ingredients">
+            Ingredients:
             <input
               type="text"
               name="ingredients"
@@ -152,8 +153,8 @@ export default function AddProduct() {
               <FontAwesomeIcon className="list--side-item-icon" icon={faPlus} />
             </span>
           </label>
-          <label htmlFor="briefDescription">
-            Brief description
+          <label className="form-section__caption" htmlFor="briefDescription">
+            Caption description:
             <input
               type="text"
               name="briefDescription"
@@ -163,8 +164,8 @@ export default function AddProduct() {
               value={briefDescriptionInput}
             />
           </label>
-          <label htmlFor="description">
-            Description
+          <label className="form-section__description" htmlFor="description">
+            Description:
             <textarea
               type="text"
               name="description"
@@ -172,8 +173,8 @@ export default function AddProduct() {
               value={descriptionInput}
             />
           </label>
-          <label htmlFor="category">
-            Category
+          <label className="form-section__category" htmlFor="category">
+            Category:
             <input
               type="text"
               name="name"
@@ -183,8 +184,8 @@ export default function AddProduct() {
               value={categoryInput}
             />
           </label>
-          <label htmlFor="imagesUrls">
-            Image
+          <label className="form-section__image" htmlFor="imagesUrls">
+            Image:
             <input
               type="text"
               name="imagesUrls"
@@ -194,8 +195,8 @@ export default function AddProduct() {
               value={imagesUrlsInput}
             />
           </label>
-          <label htmlFor="nutritionalValue">
-            Nutritional Value
+          <label className="form-section__nutritional-value" htmlFor="nutritionalValue">
+            Nutritional Value:
             <input
               type="text"
               name="nutritionalValue"
@@ -215,7 +216,7 @@ export default function AddProduct() {
           </label>
           <button
             type="submit"
-            className="submit-button"
+            className="form-button"
           >
             ADD
           </button>

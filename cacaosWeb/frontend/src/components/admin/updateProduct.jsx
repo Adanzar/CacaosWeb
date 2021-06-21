@@ -9,6 +9,7 @@ import {
   faTrashAlt, faPlus
 } from '@fortawesome/free-solid-svg-icons';
 import { modifyProduct, getOneProduct } from '../../redux/actions/actionCreators';
+import './updateProduct.scss';
 
 export default function UpdateProduct() {
   const product = useSelector((store) => store.product);
