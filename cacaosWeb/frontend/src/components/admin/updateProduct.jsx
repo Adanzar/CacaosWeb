@@ -72,16 +72,16 @@ export default function UpdateProduct() {
 
   return (
     <>
-      <div className="addProduct__container">
+      <div className="addProduct">
         <h3>Welcome back!</h3>
       </div>
-      <div className="addProduct__container--form">
+      <div className="form-section">
         <form onSubmit={(event) => {
           updateProduct(event);
         }}
         >
-          <label htmlFor="name">
-            Name
+          <label className="form-section__name" htmlFor="name">
+            Name:
             <input
               type="text"
               name="name"
@@ -91,12 +91,12 @@ export default function UpdateProduct() {
               value={productName}
             />
           </label>
-          <label htmlFor="price">
-            Price
+          <label className="form-section__price" htmlFor="price">
+            Price:
             <input
               type="number"
               name="price"
-              placeholder="write amount"
+              placeholder="Amount"
               onChange={(event) => {
                 setPriceAmountInput(event.target.value);
               }}
@@ -105,19 +105,19 @@ export default function UpdateProduct() {
             <input
               type="text"
               name="price"
-              placeholder="write currency"
+              placeholder="$, €"
               onChange={(event) => {
                 setPriceCurrencyInput(event.target.value);
               }}
               value={priceCurrencyInput}
             />
           </label>
-          <label htmlFor="weight">
-            Weight
+          <label className="form-section__weight" htmlFor="weight">
+            Weight:
             <input
               type="number"
               name="weight"
-              placeholder="write quantity"
+              placeholder="quantity"
               onChange={(event) => {
                 setWeightQuantityInput(event.target.value);
               }}
@@ -126,15 +126,15 @@ export default function UpdateProduct() {
             <input
               type="text"
               name="weight"
-              placeholder="write measure"
+              placeholder="Measure"
               onChange={(event) => {
                 setWeightMeasureInput(event.target.value);
               }}
               value={weightMeasureInput}
             />
           </label>
-          <label htmlFor="stock">
-            Stock
+          <label className="form-section__stock" htmlFor="stock">
+            Stock:
             <input
               type="number"
               name="stock"
@@ -144,7 +144,7 @@ export default function UpdateProduct() {
               value={stockInput}
             />
           </label>
-          <label htmlFor="ingredients">
+          <label className="form-section__ingredients" htmlFor="ingredients">
             <div className="ingredients__list-container">
               <ul>
 
@@ -161,7 +161,7 @@ export default function UpdateProduct() {
                 <FontAwesomeIcon className="list--side-item-icon" icon={faTrashAlt} />
               </div>
             </div>
-            Ingredients
+            Ingredients:
             <input
               type="text"
               name="ingredients"
@@ -179,8 +179,8 @@ export default function UpdateProduct() {
               <FontAwesomeIcon className="list--side-item-icon" icon={faPlus} />
             </span>
           </label>
-          <label htmlFor="briefDescription">
-            Brief description
+          <label className="form-section__caption" htmlFor="briefDescription">
+            Caption:
             <input
               type="text"
               name="briefDescription"
@@ -191,7 +191,7 @@ export default function UpdateProduct() {
             />
           </label>
           <label htmlFor="description">
-            Description
+            Description:
             <textarea
               type="text"
               name="description"
@@ -199,8 +199,8 @@ export default function UpdateProduct() {
               value={descriptionInput}
             />
           </label>
-          <label htmlFor="category">
-            Category
+          <label className="form-section__category" htmlFor="category">
+            Category:
             <input
               type="text"
               name="name"
@@ -210,8 +210,8 @@ export default function UpdateProduct() {
               value={categoryInput}
             />
           </label>
-          <label htmlFor="imagesUrls">
-            Image
+          <label className="form-section__image" htmlFor="imagesUrls">
+            Image:
             <input
               type="text"
               name="imagesUrls"
@@ -221,7 +221,7 @@ export default function UpdateProduct() {
               value={imagesUrlsInput}
             />
           </label>
-          <label htmlFor="nutritionalValue">
+          <label className="form-section__nutritional" htmlFor="nutritionalValue">
             <div className="nutritionalValue__list-container">
               <ul>
 
@@ -238,7 +238,7 @@ export default function UpdateProduct() {
                 <FontAwesomeIcon className="list--side-item-icon" icon={faTrashAlt} />
               </div>
             </div>
-            Nutritional Value
+            Nutritional Value:
             <input
               type="text"
               name="nutritionalValue"
@@ -258,7 +258,7 @@ export default function UpdateProduct() {
           </label>
           <button
             type="submit"
-            className="submit-button"
+            className="form-button"
           >
             ADD
           </button>
