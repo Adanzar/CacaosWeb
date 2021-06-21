@@ -13,8 +13,14 @@ export default function Cart() {
             <li key={product?._id} className="cart__list--products">
               <div>
                 {product?.name}
-                {product?.price?.amount}
               </div>
+              <small>
+                {product?.price?.amount}
+                {product?.price?.currency}
+              </small>
+              <p>
+                {product?.stock}
+              </p>
             </li>
           )) }
         </ul>

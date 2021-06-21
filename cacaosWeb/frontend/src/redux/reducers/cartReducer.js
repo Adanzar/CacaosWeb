@@ -4,14 +4,11 @@
 import actionTypes from '../actions/actionTypes';
 
 function cartReducer(cartProducts = [], action) {
-  // let newCartProducts = [...cartProducts];
-
   switch (action.type) {
     case actionTypes.LOAD_CART:
       return cartProducts;
 
     case actionTypes.ADD_TO_CART:
-      debugger;
       return action.newCart;
 
     default:
