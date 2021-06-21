@@ -120,6 +120,15 @@ export function modifyProduct(productId, itemToModify) {
     });
   };
 }
+export function modifyStock(productId, itemToModify) {
+  return async (dispatch) => {
+    const { data } = await axios.put(`${url}/${productId}`, itemToModify);
+    dispatch({
+      type: actionTypes.UPDATE_PRODUCT,
+      product: data
+    });
+  };
+}
 export function deleteProduct(productId) {
   return async (dispatch) => {
     const { data } = await axios.delete(`${url}/${productId}`);

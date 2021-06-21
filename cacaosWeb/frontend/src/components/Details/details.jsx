@@ -14,13 +14,13 @@ export default function Details() {
   const dispatch = useDispatch();
   const product = useSelector((store) => store.product);
   const cart = useSelector((store) => store.cart);
+  const token = useSelector((store) => store.accesstoken);
 
   function takeOutProduct(id) {
     dispatch(deleteProduct(id));
   }
 
   function addToBasket(selectedProduct) {
-    debugger;
     return dispatch(addToCart(selectedProduct, cart));
   }
 
@@ -30,35 +30,38 @@ export default function Details() {
 
   return (
     <>
-
-      <div className="card-details">
-        <div className="card-details__image">
-          <img src={product?.imagesUrls} alt={product?.name} />
-        </div>
-        <div className="card-details__info">
-          <h2>{ product?.name}</h2>
+      <div className="details">
+        <div className="details__card--container">
+          <img className="card__image" src={product?.imagesUrls} alt={product?.name} />
+          <h3>{ product?.name}</h3>
           <p>{product?.briefDescription}</p>
-          <p>
+          <small className="card__info">
             {product?.price?.amount}
             {' '}
             {product?.price?.currency}
-          </p>
-        </div>
-        <button
-          type="button"
-          onClick={() => addToBasket(product)}
-        >
-          ADD TO CART
-        </button>
-        <div className="card__details--admin-btn">
-          <div role="navigation" className="admin__btns" onClick={() => { takeOutProduct(productId); }}>
-            Delete
-          </div>
-          <Link to={`/update-product/${product?._id}`}>
-            <button className="admin__btns" type="button">
-              Update
+          </small>
+          <div className="card__buttons">
+            <button
+              className="buttons"
+              type="button"
+              onClick={() => addToBasket(product)}
+            >
+              ADD TO CART
             </button>
-          </Link>
+            {token?.user?.isAdmin && (
+            <>
+              <button type="button" className="buttons" onClick={() => { takeOutProduct(productId); }}>
+                Delete
+              </button>
+
+              <Link to={`/update-product/${product?._id}`}>
+                <button className="buttons" type="button">
+                  Update
+                </button>
+              </Link>
+            </>
+            )}
+          </div>
         </div>
         <div id="accordion">
           <div className="card">
