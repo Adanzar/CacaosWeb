@@ -139,6 +139,7 @@ export default function AddProduct() {
             <input
               type="text"
               name="ingredients"
+              placeholder="Add 1 ingredient at the time"
               onChange={(event) => {
                 setIngredientsInput(event.target.value);
               }}
@@ -150,8 +151,17 @@ export default function AddProduct() {
                 addNewIngredients(event);
               }}
             >
-              <FontAwesomeIcon className="list--side-item-icon" icon={faPlus} />
+              <FontAwesomeIcon className="form__icon" icon={faPlus} />
             </span>
+            <div className="nutritionalValue__list-container">
+              <ul>
+                {ingredientsArr.map((item) => (
+                  <li>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </label>
           <label className="form-section__caption" htmlFor="briefDescription">
             Caption description:
@@ -211,8 +221,17 @@ export default function AddProduct() {
                 addNutritionalValue(event);
               }}
             >
-              <FontAwesomeIcon className="list--side-item-icon" icon={faPlus} />
+              <FontAwesomeIcon className="form__icon" icon={faPlus} />
             </span>
+            <div className="nutritionalValue__list-container">
+              <ul>
+                {nutritionalValueArr.map((item) => (
+                  <li>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </label>
           <button
             type="submit"

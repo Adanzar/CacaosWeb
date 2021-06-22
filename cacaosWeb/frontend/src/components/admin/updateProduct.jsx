@@ -22,7 +22,7 @@ export default function UpdateProduct() {
   const [weightMeasureInput, setWeightMeasureInput] = useState(product?.weight?.measure);
   const [ingredientsInput, setIngredientsInput] = useState('');
   const [ingredientsArr, setIngredientsArr] = useState(product?.ingredients);
-  const [nutritionalInput, setNutritionalInput] = useState(product?.nutritionalValue);
+  const [nutritionalInput, setNutritionalInput] = useState('');
   const [nutritionalValueArr, setNutritionalValueArr] = useState([]);
   const [imagesUrlsInput, setImagesUrlsInput] = useState(product?.imagesUrls);
   const [descriptionInput, setDescriptionInput] = useState(product?.description);
@@ -73,7 +73,7 @@ export default function UpdateProduct() {
   return (
     <>
       <div className="addProduct">
-        <h3>Welcome back!</h3>
+        <h3>Update product</h3>
       </div>
       <div className="form-section">
         <form onSubmit={(event) => {
@@ -145,22 +145,6 @@ export default function UpdateProduct() {
             />
           </label>
           <label className="form-section__ingredients" htmlFor="ingredients">
-            <div className="ingredients__list-container">
-              <ul>
-
-                {ingredientsArr.map((item) => (
-                  <li key={item}>
-                    {item}
-                  </li>
-                ))}
-
-              </ul>
-              <div
-                onClick={deleteIngredients}
-              >
-                <FontAwesomeIcon className="list--side-item-icon" icon={faTrashAlt} />
-              </div>
-            </div>
             Ingredients:
             <input
               type="text"
@@ -176,8 +160,24 @@ export default function UpdateProduct() {
                 addNewIngredients(event);
               }}
             >
-              <FontAwesomeIcon className="list--side-item-icon" icon={faPlus} />
+              <FontAwesomeIcon className="list__plus-icon" icon={faPlus} />
             </span>
+            <div className="ingredients__list-container">
+              <ul>
+
+                {ingredientsArr?.map((item) => (
+                  <li key={item}>
+                    {item}
+                  </li>
+                ))}
+
+              </ul>
+              <div
+                onClick={deleteIngredients}
+              >
+                <FontAwesomeIcon className="list--side-item-icon" icon={faTrashAlt} />
+              </div>
+            </div>
           </label>
           <label className="form-section__caption" htmlFor="briefDescription">
             Caption:
@@ -222,22 +222,6 @@ export default function UpdateProduct() {
             />
           </label>
           <label className="form-section__nutritional" htmlFor="nutritionalValue">
-            <div className="nutritionalValue__list-container">
-              <ul>
-
-                {ingredientsArr.map((item) => (
-                  <li>
-                    {item}
-                  </li>
-                ))}
-
-              </ul>
-              <div
-                onClick={deleteNutritionalValue}
-              >
-                <FontAwesomeIcon className="list--side-item-icon" icon={faTrashAlt} />
-              </div>
-            </div>
             Nutritional Value:
             <input
               type="text"
@@ -253,8 +237,24 @@ export default function UpdateProduct() {
                 addNutritionalValue(event);
               }}
             >
-              <FontAwesomeIcon className="list--side-item-icon" icon={faPlus} />
+              <FontAwesomeIcon className="form__icon" icon={faPlus} />
             </span>
+            <div className="nutritionalValue__list-container">
+              <ul>
+
+                {ingredientsArr.map((item) => (
+                  <li>
+                    {item}
+                  </li>
+                ))}
+
+              </ul>
+              <div
+                onClick={deleteNutritionalValue}
+              >
+                <FontAwesomeIcon className="form__icon" icon={faTrashAlt} />
+              </div>
+            </div>
           </label>
           <button
             type="submit"

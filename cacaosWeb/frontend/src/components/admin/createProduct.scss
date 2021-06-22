@@ -4,8 +4,8 @@
     color: forestgreen;
 }
 .form-section{
-    border: 1px solid rgb(176, 135, 108);
-    padding: 25px;
+    
+   
 
     form{
         display: flex;
@@ -27,20 +27,30 @@
             margin: 3px 0px 0px 5px;
             border: 1px solid burlywood 
         }
-       
-    }
-    .form-section__price{
-        display: flex;
-        flex-direction: row;
-
+        .form-section__price{
+            display: flex;
+            flex-direction: column;
+    
+            input{
+                margin: 5px 0px 5px 5px;
+               
+            }  
+        }  
+        .form-section__weight{
+            display: flex;
+            flex-direction: column;
+    
         input{
             margin: 5px 0px 5px 5px;
-           
-        }  
-    }     
+               
+        }
+    } 
+       
+    }
+     
     .form-section__weight{
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
     
         input{
             margin: 5px 0px 5px 5px;
@@ -64,6 +74,8 @@
         .home__products--btn:hover{
             color:#DDDDDD;
             border-color:#181717;
+            cursor: pointer;
+
                 }
         .home__products--btn:active{
             color:#BBBBBB;

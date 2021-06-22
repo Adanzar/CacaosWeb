@@ -11,7 +11,6 @@ import store from './redux/store/index';
 import Home from './components/Home/home';
 import Cart from './components/Cart/cart';
 import Login from './components/user/login';
-import AboutUs from './components/AboutUs/aboutUs';
 import Products from './components/ProductsList/productList';
 import './App.scss';
 import Details from './components/Details/details';
@@ -29,13 +28,12 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/products" component={Products} />
-            <Route path="/aboutus" component={AboutUs} />
             <Route path="/details/:productId" component={Details} />
             <Route path="/cart" component={Cart} />
             <Route path="/login" component={Login} />
             <Route path="/add-product" component={AddProduct} />
             <Route path="/update-product/:productId" component={UpdateProduct} />
-            <Route path="/sign-up" component={SignUp} />
+            <Route path="/signup" component={SignUp} />
           </Switch>
           <Footer />
         </BrowserRouter>
