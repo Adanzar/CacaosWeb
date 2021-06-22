@@ -1,8 +1,102 @@
 import axios from 'axios';
 import {
-  getProducts, getOneProduct, createProduct, modifyProduct, deleteProduct
+  login,
+  logout,
+  signup,
+  getProducts,
+  getOneProduct,
+  createProduct,
+  modifyProduct,
+  deleteProduct,
+  modifyStock,
+  getToken
 } from './actionCreators';
 import actionTypes from './actionTypes';
+
+jest.mock('axios');
+
+describe('Given getToken function', () => {
+  describe('When is invoked', () => {
+    test('Then it should call dispatch', async () => {
+      const dispatch = jest.fn();
+      axios.mockResolvedValueOnce({
+        type: actionTypes.GET_PROFILE,
+        user: { token: '123' }
+      });
+      await getToken()(dispatch);
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+  test('getAccessToken should throw error', async () => {
+    const dispatch = jest.fn();
+    axios.mockRejectedValueOnce('error');
+    try {
+      await getToken()(dispatch);
+    } catch (error) {
+      expect(error).toBe('error');
+    }
+  });
+});
+
+describe('Given login function', () => {
+  describe('When is invoked', () => {
+    test('Then it should call dispatch', async () => {
+      const dispatch = jest.fn();
+      axios.post.mockResolvedValueOnce({
+        type: actionTypes.LOG_IN,
+        user: { email: 'a@email.com', password: '******' }
+      });
+      await login()(dispatch);
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+  test('login should throw error', async () => {
+    const dispatch = jest.fn();
+    axios.post.mockRejectedValueOnce('error');
+    try {
+      await login()(dispatch);
+    } catch (error) {
+      expect(error).toBe('error');
+    }
+  });
+});
+
+describe('Given logout function', () => {
+  describe('When is invoked', () => {
+    test('Then it should call dispatch', async () => {
+      const dispatch = jest.fn();
+      axios.post.mockResolvedValueOnce({
+        type: actionTypes.LOG_IN,
+        user: 'logout scucesfully'
+      });
+      await logout()(dispatch);
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+  test('logout should throw error', async () => {
+    const dispatch = jest.fn();
+    axios.post.mockRejectedValueOnce('error');
+    try {
+      await logout()(dispatch);
+    } catch (error) {
+      expect(error).toBe('error');
+    }
+  });
+});
+
+describe('Given signUp function', () => {
+  describe('When is invoked', () => {
+    test('Then it should call dispatch', async () => {
+      const dispatch = jest.fn();
+      axios.post.mockResolvedValueOnce({
+        type: actionTypes.LOG_IN,
+        user: { email: 'a@email.com', password: '123456' }
+      });
+      await signup()(dispatch);
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
 
 jest.mock('axios');
 describe('Given a getProducts fn', () => {
@@ -31,6 +125,7 @@ describe('Given a getProducts fn', () => {
     });
   });
 });
+
 describe('Given createProduct fn', () => {
   describe('When its invoked', () => {
     test('Then should call createProduct with dispatch', async () => {
@@ -57,6 +152,7 @@ describe('Given createProduct fn', () => {
     });
   });
 });
+
 describe('Given deleteProduct fn', () => {
   describe('When its invoked', () => {
     test('Then should call deleteProduct with dispatch', async () => {
@@ -83,6 +179,7 @@ describe('Given deleteProduct fn', () => {
     });
   });
 });
+
 describe('Given modifyProduct fn', () => {
   describe('When its invoked', () => {
     test('Then should call modifyProduct with dispatch', async () => {
@@ -121,6 +218,22 @@ describe('Given getOneProduct fn', () => {
       } catch (error) {
         expect(error).toBe('error');
       }
+    });
+  });
+});
+
+describe('Given modifyStock fn', () => {
+  describe('When its invoked', () => {
+    test('Then should call modifyStock with dispatch', async () => {
+      const dispatch = jest.fn();
+      const product = { stock: 4 };
+      axios.put.mockResolvedValue({
+        type: actionTypes.DELETE_FROM_CART,
+        data: 4
+
+      });
+      await modifyStock(product)(dispatch);
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });

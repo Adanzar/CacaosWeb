@@ -7,7 +7,7 @@ const urlSignUp = 'http://localhost:4000/signup';
 const urlLogout = 'http://localhost:4000/logout';
 const urlProfile = 'http://localhost:4000/user/profile';
 
-export function getAccessToken(token) {
+export function getToken(token) {
   return async (dispatch) => {
     try {
       const { data } = await axios(urlProfile, { headers: { authorization: `Bearer ${token}` } });
