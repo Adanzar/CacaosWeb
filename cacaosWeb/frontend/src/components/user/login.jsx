@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import { login, getAccessToken } from '../../redux/actions/actionCreators';
+import { login, getToken } from '../../redux/actions/actionCreators';
 
 export default function Login() {
   const history = useHistory();
@@ -14,11 +14,10 @@ export default function Login() {
   const goToSignUp = () => history.push('/signup');
 
   function sendLogIn() {
-    console.log(email, password);
     dispatch(login(email, password));
   }
   useEffect(() => {
-    dispatch(getAccessToken(user.token));
+    dispatch(getToken(user.token));
   }, [user]);
 
   return (
