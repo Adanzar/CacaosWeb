@@ -43,16 +43,31 @@ describe('createProduct component', () => {
         fireEvent.change(inputPriceCurrency, { target: { value: '$' } });
 
         const inputWeightQuantity = screen.getByTestId('input-weight-quantity');
-        fireEvent.click(inputWeightQuantity, { target: { value: 100 } });
+        fireEvent.change(inputWeightQuantity, { target: { value: 100 } });
 
         const inputWeightMeasure = screen.getByTestId('input-weight-measure');
-        fireEvent.click(inputWeightMeasure, { target: { value: 'g' } });
+        fireEvent.change(inputWeightMeasure, { target: { value: 'g' } });
 
         const inputStock = screen.getByTestId('input-stock');
-        fireEvent.click(inputStock, { target: { value: 20 } });
+        fireEvent.change(inputStock, { target: { value: 20 } });
+
+        const inputBriefDescription = screen.getByTestId('input-caption');
+        fireEvent.change(inputBriefDescription, { target: { value: 'whatever and more' } });
+
+        const inputDescription = screen.getByTestId('input-description');
+        fireEvent.change(inputDescription, { target: { value: 'whatever' } });
+
+        const inputCategory = screen.getByTestId('input-category');
+        fireEvent.change(inputCategory, { target: { value: 'chocolate' } });
 
         const inputIngredients = screen.getByTestId('input-ingredients');
-        fireEvent.click(inputIngredients, { target: { value: 'sugar' } });
+        fireEvent.change(inputIngredients, { target: { value: 'sugar' } });
+
+        const inputImagesUrls = screen.getByTestId('input-image');
+        fireEvent.change(inputImagesUrls, { target: { value: 'http//loquesea' } });
+
+        const inputNutritionalValue = screen.getByTestId('input-nutritionalValue');
+        fireEvent.change(inputNutritionalValue, { target: { value: 'http//loquesea' } });
 
         const buttonAdd = screen.getByTestId('add-btn');
         fireEvent.click(buttonAdd);

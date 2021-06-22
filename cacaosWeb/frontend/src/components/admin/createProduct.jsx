@@ -161,7 +161,7 @@ export default function AddProduct() {
             >
               <FontAwesomeIcon className="form__icon" icon={faPlus} />
             </span>
-            <div className="nutritionalValue__list-container">
+            <div className="ingredients__list-container">
               <ul>
                 {ingredientsArr.map((item) => (
                   <li>
@@ -174,7 +174,7 @@ export default function AddProduct() {
           <label className="form-section__caption" htmlFor="briefDescription">
             Caption:
             <input
-              data-testid="input-description"
+              data-testid="input-caption"
               type="text"
               name="briefDescription"
               onChange={(event) => {
@@ -186,7 +186,7 @@ export default function AddProduct() {
           <label className="form-section__description" htmlFor="description">
             Description:
             <textarea
-              data-testid="input-textarea"
+              data-testid="input-description"
               type="text"
               name="description"
               onChange={(event) => { setDescriptionInput(event.target.value); }}
