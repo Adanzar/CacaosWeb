@@ -1,6 +1,5 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -18,6 +17,8 @@ export default function ProductList() {
   return (
     <div className="products">
       <input
+        placeholder="search products"
+        data-testid="input-search"
         className="products__search"
         type="text"
         onChange={(event) => {
@@ -25,28 +26,28 @@ export default function ProductList() {
         }}
       />
       <ul className="products__list">
-        {products.filter((item) => {
+        {products?.filter((item) => {
           if (search === '') {
             return item;
-          } if (item.name.toLowerCase().includes(search.toLowerCase())) {
+          } if (item?.name.toLowerCase().includes(search.toLowerCase())) {
             return item;
           }
         }).map((item) => (
           <Link className="products__list-link" to={`/details/${item?._id}`}>
-            <li key={item._id} className="products__list-card">
-              <img className="products__list--card-image" src={item.imagesUrls} alt={item.name} />
-              <small className="products__list--card-info">
-                {item.name}
+            <li key={item?._id} className="products__list-card">
+              <img key={item?.imagesUrls} className="products__list--card-image" src={item?.imagesUrls} alt={item?.name} />
+              <small key={item?.weight?.measure} className="products__list--card-info">
+                {item?.name}
                 {' '}
-                {item.weight.quantity}
+                {item?.weight?.quantity}
                 {' '}
-                {item.weight.measure}
+                {item?.weight?.measure}
               </small>
-              <small className="products__list--card-price">
+              <small key={item?.price?.amount} className="products__list--card-price">
                 {' '}
-                {item.price.amount}
+                {item?.price?.amount}
                 {' '}
-                {item.price.currency}
+                {item?.price?.currency}
               </small>
             </li>
           </Link>

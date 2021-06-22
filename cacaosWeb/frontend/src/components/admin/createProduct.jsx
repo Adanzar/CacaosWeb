@@ -66,13 +66,15 @@ export default function AddProduct() {
         <h3>Create a new product!</h3>
       </div>
       <div className="form-section">
-        <form onSubmit={(event) => {
-          addProduct(event);
-        }}
+        <form
+          onSubmit={(event) => {
+            addProduct(event);
+          }}
         >
           <label className="form-section__name" htmlFor="name">
             Name:
             <input
+              data-testid="input-name"
               type="text"
               name="name"
               onChange={(event) => {
@@ -84,6 +86,7 @@ export default function AddProduct() {
           <label className="form-section__price" htmlFor="price">
             Price:
             <input
+              data-testid="input-price-amount"
               type="number"
               name="price"
               placeholder="Amount"
@@ -93,6 +96,7 @@ export default function AddProduct() {
               value={priceAmountInput}
             />
             <input
+              data-testid="input-price-currency"
               type="text"
               name="price"
               placeholder="$, €"
@@ -105,6 +109,7 @@ export default function AddProduct() {
           <label className="form-section__weight" htmlFor="weight">
             Weight:
             <input
+              data-testid="input-weight-quantity"
               type="number"
               name="weight"
               placeholder="Quantity"
@@ -114,6 +119,7 @@ export default function AddProduct() {
               value={weightQuantityInput}
             />
             <input
+              data-testid="input-weight-measure"
               type="text"
               name="weight"
               placeholder="Measure"
@@ -126,6 +132,7 @@ export default function AddProduct() {
           <label className="form-section__stock" htmlFor="stock">
             Stock:
             <input
+              data-testid="input-stock"
               type="number"
               name="stock"
               onChange={(event) => {
@@ -137,6 +144,7 @@ export default function AddProduct() {
           <label className="form-section__ingredients" htmlFor="ingredients">
             Ingredients:
             <input
+              data-testid="input-ingredients"
               type="text"
               name="ingredients"
               placeholder="Add 1 ingredient at the time"
@@ -153,7 +161,7 @@ export default function AddProduct() {
             >
               <FontAwesomeIcon className="form__icon" icon={faPlus} />
             </span>
-            <div className="nutritionalValue__list-container">
+            <div className="ingredients__list-container">
               <ul>
                 {ingredientsArr.map((item) => (
                   <li>
@@ -164,8 +172,9 @@ export default function AddProduct() {
             </div>
           </label>
           <label className="form-section__caption" htmlFor="briefDescription">
-            Caption description:
+            Caption:
             <input
+              data-testid="input-caption"
               type="text"
               name="briefDescription"
               onChange={(event) => {
@@ -177,6 +186,7 @@ export default function AddProduct() {
           <label className="form-section__description" htmlFor="description">
             Description:
             <textarea
+              data-testid="input-description"
               type="text"
               name="description"
               onChange={(event) => { setDescriptionInput(event.target.value); }}
@@ -186,6 +196,7 @@ export default function AddProduct() {
           <label className="form-section__category" htmlFor="category">
             Category:
             <input
+              data-testid="input-category"
               type="text"
               name="name"
               onChange={(event) => {
@@ -197,6 +208,7 @@ export default function AddProduct() {
           <label className="form-section__image" htmlFor="imagesUrls">
             Image:
             <input
+              data-testid="input-image"
               type="text"
               name="imagesUrls"
               onChange={(event) => {
@@ -208,6 +220,7 @@ export default function AddProduct() {
           <label className="form-section__nutritional-value" htmlFor="nutritionalValue">
             Nutritional Value:
             <input
+              data-testid="input-nutritionalValue"
               type="text"
               name="nutritionalValue"
               onChange={(event) => {
@@ -234,6 +247,7 @@ export default function AddProduct() {
             </div>
           </label>
           <button
+            data-testid="add-btn"
             type="submit"
             className="form-button"
           >
