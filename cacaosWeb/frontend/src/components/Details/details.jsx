@@ -1,12 +1,8 @@
-/* eslint-disable no-debugger */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable no-underscore-dangle */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getOneProduct, deleteProduct } from '../../redux/actions/actionCreators';
-import addToCart from '../../redux/actions/cartActionCreators';
+import { getOneProduct, deleteProduct, modifyStock } from '../../redux/actions/actionCreators';
+import { addToCart } from '../../redux/actions/cartActionCreators';
 import './detail.scss';
 
 export default function Details() {
@@ -15,13 +11,22 @@ export default function Details() {
   const product = useSelector((store) => store.product);
   const cart = useSelector((store) => store.cart);
   const token = useSelector((store) => store.accesstoken);
-
+  const [currentStock, setCurrentStock] = useState(product?.stock);
+  let changeStock = null;
   function takeOutProduct(id) {
     dispatch(deleteProduct(id));
   }
 
+  function subsStock() {
+    changeStock = currentStock - 1;
+    return changeStock;
+  }
+
   function addToBasket(selectedProduct) {
-    return dispatch(addToCart(selectedProduct, cart));
+    subsStock();
+    setCurrentStock(changeStock);
+    dispatch(modifyStock(product._id, { stock: currentStock }));
+    dispatch(addToCart(selectedProduct, cart));
   }
 
   useEffect(() => {
@@ -46,20 +51,31 @@ export default function Details() {
               type="button"
               onClick={() => addToBasket(product)}
             >
-              ADD TO CART
+              <img src="https://img.icons8.com/windows/30/000000/fast-cart.png" alt="cart" />
             </button>
-            {token?.user?.isAdmin && (
-            <>
-              <button type="button" className="buttons" onClick={() => { takeOutProduct(productId); }}>
-                Delete
-              </button>
 
-              <Link to={`/update-product/${product?._id}`}>
-                <button className="buttons" type="button">
-                  Update
-                </button>
-              </Link>
-            </>
+            {token?.user?.isAdmin && (
+              <>
+                <small className="admin__section-header"> Admin options </small>
+                <div className="admin__section-buttons">
+                  <button type="button" className="buttons" onClick={() => { takeOutProduct(productId); }}>
+                    <img src="https://img.icons8.com/fluent-systems-regular/30/000000/trash--v1.png" alt="trashIcon" />
+                  </button>
+                  <Link to={`/update-product/${product?._id}`}>
+                    <button className="buttons" type="button">
+                      <img src="https://img.icons8.com/ios-filled/30/000000/approve-and-update.png" alt="update-btn" />
+
+                    </button>
+                  </Link>
+
+                  <Link to={`/add-product/${product?._id}`}>
+                    <button className="buttons" type="button">
+                      <img src="https://img.icons8.com/ios/30/000000/create-new.png" alt="add-btn" />
+                    </button>
+                  </Link>
+
+                </div>
+              </>
             )}
           </div>
         </div>

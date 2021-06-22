@@ -96,6 +96,7 @@ export function getOneProduct(productId) {
     }
   };
 }
+
 export function createProduct(product) {
   return async (dispatch) => {
     try {

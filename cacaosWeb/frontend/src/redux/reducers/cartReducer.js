@@ -1,6 +1,3 @@
-/* eslint-disable no-debugger */
-/* eslint-disable no-return-assign */
-/* eslint-disable no-case-declarations */
 import actionTypes from '../actions/actionTypes';
 
 function cartReducer(cartProducts = [], action) {
@@ -11,6 +8,8 @@ function cartReducer(cartProducts = [], action) {
     case actionTypes.ADD_TO_CART:
       return action.newCart;
 
+    case actionTypes.DELETE_FROM_CART:
+      return action.newCart;
     default:
       return cartProducts;
   }

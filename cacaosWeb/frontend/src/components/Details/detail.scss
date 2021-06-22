@@ -2,9 +2,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     .details__card--container{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     
+        p{
+          
+            font-size: 20px
+        }
+        .card__info{
+        font-size: 112%;
+        }
         
         .card__image{
             margin-top: -5px;
@@ -18,6 +30,36 @@
         font-style: italic;
         color: burlywood
         }
+        
+        .card__buttons{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .admin__section-header{
+            text-align: center;
+            font-size: 20px;
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        
+        .buttons{
+                display: inline-block;
+               background-color: transparent;
+               border: 0.16em outset burlywood;
+                padding: 0.8rem;
+                margin: 2rem;
+                box-sizing: border-box;
+                text-decoration:none;
+                text-transform:uppercase;
+                font-family:'Roboto',sans-serif;
+                font-weight:400;
+                color:#FFFFFF;
+                text-align:center;
+                transition: all 0.15s;        
+        }
 
     }
     
@@ -25,6 +67,7 @@
         #accordion{
             margin-top: 45px;
            margin-left: -66px;
+
         .card{
             width: 80%;
             margin-bottom: 20px;
