@@ -22,6 +22,7 @@ export default function SignUp() {
       <div className="signup">
         <h2 className="signup__header">Fill in your email and password to sign up</h2>
         <input
+          data-testid="input-email"
           className="signup__email"
           type="email"
           value={email}
@@ -29,6 +30,7 @@ export default function SignUp() {
           placeholder="Email"
         />
         <input
+          data-testid="input-password"
           className="signup__password"
           type="password"
           value={password}
@@ -36,6 +38,7 @@ export default function SignUp() {
           placeholder="Password"
         />
         <button
+          data-testid="signup-btn"
           className="signup__button"
           type="button"
           onClick={sendSignUp}

@@ -21,8 +21,6 @@ export default function Cart() {
     dispatch(deleteInCart(index, cart));
   }
 
-  console.log(cart);
-
   return (
     <>
       <h4> Products in the cart </h4>
@@ -30,9 +28,11 @@ export default function Cart() {
         <ul className="cart__list">
           {cart?.map((product, index) => (
             <li key={product?._id} className="cart__list--products">
-              <div>
+
+              <img src={product?.imagesUrls} alt={product?.name} />
+              <small>
                 {product?.name}
-              </div>
+              </small>
               <small>
                 {product?.price?.amount}
                 {product?.price?.currency}
@@ -44,7 +44,7 @@ export default function Cart() {
                 type="button"
                 onClick={() => { removeFromCart(index); }}
               >
-                poner basurita
+                <img src="https://img.icons8.com/fluent-systems-regular/30/000000/trash--v1.png" alt="trashIcon" />
               </button>
             </li>
 

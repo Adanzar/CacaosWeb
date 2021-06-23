@@ -20,7 +20,8 @@ export default function Footer() {
           )
           : (
             <li className="footer__list--item" onClick={() => setInTouch(!inTouch)}>
-              adan@gmail.com
+              <small> cacaos@gmail.com </small>
+              <small> Address: Calle Goya nº 2, Alcala de Henares, 28807, Madrid </small>
             </li>
           )}
         <li className="footer__list--followus">
