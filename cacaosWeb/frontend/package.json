@@ -58,7 +58,7 @@
   "jest": {
     "watchPathIgnorePatterns": [
       "<rootDir>/src/utils/test-utils.js",
-      "<rootDir>/src/index.jsx",
+      "<rootDir>/src/index.js",
       "<rootDir>/src/reportWebVitals.js "
     ]
   }
