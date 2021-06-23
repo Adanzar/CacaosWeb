@@ -12,9 +12,6 @@ export default function Footer() {
   return (
     <>
       <ul className="footer__list">
-        <li className="footer__list--item">
-          Chocolates
-        </li>
         { !inTouch
           ? (
             <li className="footer__list--item" onClick={() => setInTouch(!inTouch)}>
@@ -26,9 +23,6 @@ export default function Footer() {
               adan@gmail.com
             </li>
           )}
-        <li className="footer__list--item">
-          Legal terms
-        </li>
         <li className="footer__list--followus">
           <FontAwesomeIcon className="list__followus--icon" icon={faTwitter} />
           <FontAwesomeIcon className="list__followus--icon" icon={faFacebook} />

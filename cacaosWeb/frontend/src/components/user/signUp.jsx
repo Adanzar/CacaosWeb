@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { signup, getAccessToken } from '../../redux/actions/actionCreators';
+import { signup, getToken } from '../../redux/actions/actionCreators';
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
@@ -13,7 +13,7 @@ export default function SignUp() {
   }
   useEffect(() => {
     if (user?.token) {
-      dispatch(getAccessToken(user?.token));
+      dispatch(getToken(user?.token));
     }
   }, [user]);
 

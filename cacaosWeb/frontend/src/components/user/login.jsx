@@ -25,21 +25,26 @@ export default function Login() {
       <div className="login">
         <h2>Fill in your email and password to log in</h2>
         <input
+          data-testid="input-email"
           className="login__email"
           type="email"
+          required
           value={email}
           onChange={(event) => { setEmail(event.target.value); }}
           placeholder="Email"
         />
         <input
+          data-testid="input-password"
           className="login__password"
           type="password"
+          required
           value={password}
           onChange={(event) => { setPassword(event.target.value); }}
           placeholder="Password"
         />
         <button
           className="login__button"
+          data-testid="login-btn"
           type="button"
           onClick={sendLogIn}
         >
